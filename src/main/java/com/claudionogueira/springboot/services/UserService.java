@@ -2,7 +2,9 @@ package com.claudionogueira.springboot.services;
 
 import com.claudionogueira.springboot.web.dto.UserRegistrationDTO;
 
-public interface UserService {
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public interface UserService extends UserDetailsService {
 
     void save(UserRegistrationDTO registrationDTO);
 }

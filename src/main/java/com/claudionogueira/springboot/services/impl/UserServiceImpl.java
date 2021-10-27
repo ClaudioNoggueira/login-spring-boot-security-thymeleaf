@@ -8,6 +8,8 @@ import com.claudionogueira.springboot.repositories.UserRepository;
 import com.claudionogueira.springboot.services.UserService;
 import com.claudionogueira.springboot.web.dto.UserRegistrationDTO;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,5 +26,11 @@ public class UserServiceImpl implements UserService {
         User entity = new User(null, registrationDTO.getFirstName(), registrationDTO.getLastName(),
                 registrationDTO.getEmail(), registrationDTO.getPassword(), Arrays.asList(new Role(null, "ROLE_USER")));
         repo.save(entity);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
