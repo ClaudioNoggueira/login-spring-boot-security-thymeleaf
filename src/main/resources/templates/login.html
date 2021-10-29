@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação de Cadastro e Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand" th:href="@{/}">Módulo de Cadastro e Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <h1 class="text-center">Login de Usuário</h1>
+
+                <form th:action="@{/login}" method="post">
+
+                    <!-- Error messege -->
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            Nome de usuário ou senha inválidos.
+                        </div>
+                    </div>
+
+                    <!-- Logout message -->
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">
+                            Você se desconectou do sistema
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Email:</label>
+                        <input type="text" name="username" id="username" class="form-control"
+                            placeholder="Digite o email de cadastro." autofocus="autofocus">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha:</label>
+                        <input type="password" name="password" id="password" class="form-control"
+                            placeholder="Digite a senha de cadastro." autofocus="autofocus">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input type="submit" name="login-submit" id="Login-submit" value="Login"
+                                    class="form-control btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div class="form-group">
+                    <span>Não possui cadastro? <a href="/" th:href="@{/registration}">Registre-se aqui.</a></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
